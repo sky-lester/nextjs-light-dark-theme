@@ -9,9 +9,11 @@ import {
   useState
 } from "react"
 
+type Theme = "light" | "dark"
+
 interface ThemeContextProps {
-  theme: string
-  setTheme: Dispatch<SetStateAction<string>>
+  theme: Theme
+  setTheme: Dispatch<SetStateAction<Theme>>
 }
 
 export const ThemeContext = createContext<ThemeContextProps>({
@@ -19,7 +21,7 @@ export const ThemeContext = createContext<ThemeContextProps>({
 } as ThemeContextProps)
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<string>("light")
+  const [theme, setTheme] = useState<Theme>("light")
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme)

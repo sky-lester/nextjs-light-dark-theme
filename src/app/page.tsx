@@ -1,14 +1,16 @@
-import { ThemeContext, useTheme } from "@/theme-context"
-import { useContext } from "react"
+"use client"
+import { useTheme } from "@/theme-context"
 
 export default function Home() {
-  const value = useContext(ThemeContext)
-  console.log(value)
+  const { theme, setTheme } = useTheme()
   return (
     <main className="flex flex-col items-center justify-between p-24">
       <h1>Home Page</h1>
       <p>This is a sample content for the homepage</p>
-      <button onClick={() => {}}>Change Theme</button>
+      <div className="" style={{ display: "flex", gap: "4px" }}>
+        <button onClick={() => setTheme("dark")}>Dark Mode</button>
+        <button onClick={() => setTheme("light")}>Light Mode</button>
+      </div>
     </main>
   )
 }

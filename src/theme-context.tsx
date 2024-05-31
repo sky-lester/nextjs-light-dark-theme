@@ -1,34 +1,35 @@
 "use client"
 import {
   createContext,
+  Dispatch,
   ReactNode,
+  SetStateAction,
   useContext,
   useEffect,
   useState
 } from "react"
 
-export const ThemeContext = createContext({})
-
-export const useTheme = () => {
-  return useContext(ThemeContext)
+interface ThemeContextProps {
+  theme: string
+  setTheme: Dispatch<SetStateAction<string>>
 }
 
+export const ThemeContext = createContext<ThemeContextProps>({
+  theme: "light"
+} as ThemeContextProps)
+
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true)
-
-  const toggleTheme = () => {
-    setIsDarkMode((prev) => !prev)
-  }
-
-  const theme = isDarkMode ? "dark" : "light"
+  const [theme, setTheme] = useState<string>("light")
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme)
-  }, [isDarkMode, theme])
+  }, [theme])
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   )
 }
+
+export const useTheme = () => useContext(ThemeContext)

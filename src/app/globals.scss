@@ -1,5 +1,9 @@
-@use "./themes/dark.scss" as *;
-@use "./themes/light.scss" as *;
+@use "./themes/dark.css" as *;
+@use "./themes/light.css" as *;
+@use "./themes/christmas.css" as *;
+
+// @use './themes/*' as *;
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

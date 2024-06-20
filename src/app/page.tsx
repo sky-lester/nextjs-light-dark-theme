@@ -10,6 +10,7 @@ export default function Home() {
       <div className="" style={{ display: "flex", gap: "4px" }}>
         <button onClick={() => setTheme("dark")}>Dark Mode</button>
         <button onClick={() => setTheme("light")}>Light Mode</button>
+        <button onClick={() => setTheme("christmas")}>Christmas Mode</button>
       </div>
     </main>
   )

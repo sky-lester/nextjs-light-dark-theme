@@ -9,7 +9,7 @@ import {
   useState
 } from "react"
 
-type Theme = "light" | "dark"
+type Theme = "light" | "dark" | "christmas"
 
 interface ThemeContextProps {
   theme: Theme
